@@ -6,6 +6,8 @@ export class DeleteProduct {
   }
 
   async delete (id: string): Promise<void> {
-    await this.productRepository.delete(id)
+    const product = await this.productRepository.findById(id)
+    const { id: idToDelete } = product
+    await this.productRepository.delete(idToDelete)
   }
 }
