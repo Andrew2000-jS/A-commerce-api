@@ -1,4 +1,4 @@
-import { ProcessEnv } from '../../../shared/@types/environment'
+import { ProcessEnv } from '../@types/environment'
 import { config } from 'dotenv'
 import mongoose from 'mongoose'
 config()

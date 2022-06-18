@@ -1,4 +1,6 @@
 import express, { Express } from 'express'
+import productRoutes from './routes/routes'
+import cors from 'cors'
 
 export class Server {
   private readonly express: Express
@@ -7,6 +9,9 @@ export class Server {
   constructor (port: string) {
     this.port = port
     this.express = express()
+    this.express.use(express.json())
+    this.express.use(cors())
+    this.express.use('/api', productRoutes)
   }
 
   async listen (): Promise<void> {

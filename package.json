@@ -36,7 +36,9 @@
     "parserOptions": {
       "project": "./tsconfig.json"
     },
-    "rules": {},
+    "rules": {
+     "consistent-type-definitions": "off"
+    },
     "extends": [
       "./node_modules/ts-standard/eslintrc.json"
     ]

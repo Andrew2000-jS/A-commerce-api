@@ -1,9 +1,5 @@
-import { Product } from '../model/product.model'
+import { IProductEntity } from '../entities/product.entity'
 
 export interface ProductRepository {
-  findAll: () => Promise<Product[]>
-  findById: (id: string) => Promise<Product>
-  save: (product: Product) => Promise<Product>
-  delete: (id: string) => Promise<void>
-  update: (product: Product) => Promise<Product>
+  save: (product: IProductEntity) => Promise<IProductEntity>
 }
