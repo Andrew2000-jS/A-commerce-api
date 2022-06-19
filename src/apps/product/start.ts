@@ -1,7 +1,7 @@
 import { Server } from './server'
 import '../../context/shared/mongoDB'
 
-const PORT = '5000'
+const PORT = '8080'
 const server = new Server(PORT)
 
 async function main (): Promise<void> {

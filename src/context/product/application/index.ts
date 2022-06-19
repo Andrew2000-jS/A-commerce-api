@@ -1,6 +1,5 @@
-import ProductCreator from './ProductCreator'
-import MongoProductRepository from '../../../context/product/infrastructure/database/persistence/mongo/MongoProductRepository'
-
-const productRepository = new MongoProductRepository()
-
-export default ProductCreator(productRepository)
+export { default as FindProduct } from './findProduct.interactor'
+export { default as FindAllProducts } from './findProducts.interactor'
+export { default as UpdatedProduct } from './updateProduct.interactor'
+export { default as ProductCreator } from './productCreator.interactor'
+export { default as DeleteProduct } from './deleteProduct.interactor'

@@ -18,10 +18,13 @@
     "@types/express": "^4.17.13",
     "@types/helmet": "^4.0.0",
     "@types/mongoose": "^5.11.97",
+    "@types/morgan": "1.9.3",
     "@types/node": "^17.0.36",
+    "@types/uuid": "^8.3.4",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
     "jest": "28.1.0",
+    "morgan": "1.10.0",
     "ts-standard": "^11.0.0",
     "tsc-watch": "5.0.3",
     "typescript": "4.7.2"
@@ -30,14 +33,12 @@
     "cors": "2.8.5",
     "express": "4.18.1",
     "helmet": "5.1.0",
-    "mongoose": "^6.3.5"
+    "mongoose": "^6.3.5",
+    "uuid": "8.3.2"
   },
   "eslintConfig": {
     "parserOptions": {
       "project": "./tsconfig.json"
-    },
-    "rules": {
-     "consistent-type-definitions": "off"
     },
     "extends": [
       "./node_modules/ts-standard/eslintrc.json"

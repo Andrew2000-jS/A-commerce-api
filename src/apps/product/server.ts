@@ -1,6 +1,7 @@
 import express, { Express } from 'express'
 import productRoutes from './routes/routes'
 import cors from 'cors'
+import morgan from 'morgan'
 
 export class Server {
   private readonly express: Express
@@ -11,6 +12,7 @@ export class Server {
     this.express = express()
     this.express.use(express.json())
     this.express.use(cors())
+    this.express.use(morgan('dev'))
     this.express.use('/api', productRoutes)
   }
 
