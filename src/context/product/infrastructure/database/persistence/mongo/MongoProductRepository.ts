@@ -1,12 +1,10 @@
 import ProductSchema from '../../schemas/ProductSchema'
 import { IProductEntity } from '../../../../domain/entities/product.entity'
 import { ProductRepository } from '../../../../domain/repository/product.repository'
-import { v4 as uuidv4 } from 'uuid'
 
 export default class MongoProductRepository implements ProductRepository {
   public async save (product: IProductEntity): Promise<IProductEntity> {
     const newProduct = {
-      id: uuidv4(),
       title: product.title,
       description: product.description,
       price: product.price,

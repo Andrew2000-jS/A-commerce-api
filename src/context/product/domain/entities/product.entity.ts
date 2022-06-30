@@ -1,5 +1,6 @@
+import { ObjectId } from 'mongoose'
 export interface IProductEntity {
-  id: string
+  id: ObjectId
   title: string
   description?: string
   price: number

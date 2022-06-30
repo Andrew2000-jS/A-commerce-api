@@ -1,5 +1,6 @@
 import express, { Express } from 'express'
 import productRoutes from './routes/routes'
+import helmet from 'helmet'
 import cors from 'cors'
 import morgan from 'morgan'
 
@@ -10,6 +11,7 @@ export class Server {
   constructor (port: string) {
     this.port = port
     this.express = express()
+    this.express.use(helmet())
     this.express.use(express.json())
     this.express.use(cors())
     this.express.use(morgan('dev'))
