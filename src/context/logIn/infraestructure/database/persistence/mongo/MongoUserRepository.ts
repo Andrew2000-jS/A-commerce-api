@@ -16,4 +16,20 @@ export default class MongoUserRepository implements UserRepository {
     const savedProduct = await createUser.save()
     return savedProduct
   }
+
+  public async findAll (): Promise<IUserEntity[]> {
+    const users = await UserSchema.find()
+    return users
+  }
+
+  public async findUser (id: string): Promise<IUserEntity> {
+    const user = await UserSchema.findById(id)
+    return user
+  }
+
+  public async delete (id: string): Promise<void> {
+    await UserSchema.findByIdAndDelete(id)
+  }
+
+  // public async update(user: IUserEntity): Promise<IUserEntity> {}
 }

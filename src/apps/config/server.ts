@@ -1,5 +1,6 @@
 import express, { Express } from 'express'
-import productRoutes from './routes/routes'
+import { productsRoutes } from '../product/routes'
+import { userRoutes } from '../logIn/routes'
 import helmet from 'helmet'
 import cors from 'cors'
 import morgan from 'morgan'
@@ -15,7 +16,8 @@ export class Server {
     this.express.use(express.json())
     this.express.use(cors())
     this.express.use(morgan('dev'))
-    this.express.use('/api', productRoutes)
+    this.express.use('/api', productsRoutes)
+    this.express.use('/api', userRoutes)
   }
 
   async listen (): Promise<void> {
