@@ -1,3 +1,5 @@
 export { default as UserCreator } from './userCreator.interactor'
 export { default as FindUsers } from './findUsers.interactor'
 export { default as FindUser } from './findUser.interactor'
+export { default as DeteleUser } from './deleteUser.interactor'
+export { default as UpdateUser } from './udpateUser.interactor'

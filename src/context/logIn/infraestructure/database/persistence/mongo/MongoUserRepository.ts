@@ -31,5 +31,8 @@ export default class MongoUserRepository implements UserRepository {
     await UserSchema.findByIdAndDelete(id)
   }
 
-  // public async update(user: IUserEntity): Promise<IUserEntity> {}
+  public async update (user: IUserEntity): Promise<IUserEntity> {
+    const updatedUser = await UserSchema.findByIdAndUpdate(user.id, user)
+    return updatedUser
+  }
 }

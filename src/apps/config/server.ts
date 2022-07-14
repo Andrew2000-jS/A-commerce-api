@@ -1,6 +1,9 @@
 import express, { Express } from 'express'
 import { productsRoutes } from '../product/routes'
 import { userRoutes } from '../logIn/routes'
+import handleErrors from '../shared/Errors'
+import notFound from '../shared/lib'
+
 import helmet from 'helmet'
 import cors from 'cors'
 import morgan from 'morgan'
@@ -18,7 +21,11 @@ export class Server {
     this.express.use(morgan('dev'))
     this.express.use('/api', productsRoutes)
     this.express.use('/api', userRoutes)
+    this.express.use(notFound)
+    this.express.use(handleErrors)
   }
+
+  // Utiliza next para pasar las rutas a los errors
 
   async listen (): Promise<void> {
     return await new Promise((resolve) => {
