@@ -25,8 +25,6 @@ export class Server {
     this.express.use(handleErrors)
   }
 
-  // Utiliza next para pasar las rutas a los errors
-
   async listen (): Promise<void> {
     return await new Promise((resolve) => {
       this.express.listen(this.port, () => console.log(`Server on port ${this.port}`))
