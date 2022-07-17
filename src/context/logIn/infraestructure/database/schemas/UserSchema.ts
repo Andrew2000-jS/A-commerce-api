@@ -27,12 +27,15 @@ const UserSchema = new Schema({
     required: true,
     lowercase: true,
     trim: true
+  },
+  role: {
+    type: String,
+    required: true
   }
 
 }, { timestamps: true, versionKey: false })
 
 UserSchema.pre('save', async function (next) {
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (this.isModified('password')) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(this.password, salt)
@@ -42,15 +45,5 @@ UserSchema.pre('save', async function (next) {
     return next()
   }
 })
-
-UserSchema.methods.comparePassword = async function (password: string, callback: any): Promise<any> {
-  bcrypt.compare(password, this.password, function (error, isMatch) {
-    if (error != null) {
-      return callback(error)
-    } else {
-      callback(null, isMatch)
-    }
-  })
-}
 
 export default model('User', UserSchema)

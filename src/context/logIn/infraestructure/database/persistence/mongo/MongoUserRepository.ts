@@ -1,7 +1,6 @@
 import UserSchema from '../../schemas/UserSchema'
 import { IUserEntity } from '../../../../domain/entities/user.entity'
 import { UserRepository } from '../../../../domain/repository/user.repository'
-
 export default class MongoUserRepository implements UserRepository {
   public async save (user: IUserEntity): Promise<IUserEntity> {
     const newUser = {
@@ -9,12 +8,14 @@ export default class MongoUserRepository implements UserRepository {
       lastname: user.lastname,
       username: user.username,
       password: user.password,
-      mail: user.mail
+      mail: user.mail,
+      role: user.role
     }
 
     const createUser = await UserSchema.create(newUser)
-    const savedProduct = await createUser.save()
-    return savedProduct
+    const savedUser = await createUser.save()
+
+    return savedUser
   }
 
   public async findAll (): Promise<IUserEntity[]> {
@@ -22,8 +23,8 @@ export default class MongoUserRepository implements UserRepository {
     return users
   }
 
-  public async findUser (id: string): Promise<IUserEntity> {
-    const user = await UserSchema.findById(id)
+  public async findUser (username: string): Promise<IUserEntity> {
+    const user = await UserSchema.findOne({ username })
     return user
   }
 
@@ -32,7 +33,7 @@ export default class MongoUserRepository implements UserRepository {
   }
 
   public async update (user: IUserEntity): Promise<IUserEntity> {
-    const updatedUser = await UserSchema.findByIdAndUpdate(user.id, user)
+    const updatedUser = await UserSchema.findByIdAndUpdate(user.id, { $set: user })
     return updatedUser
   }
 }

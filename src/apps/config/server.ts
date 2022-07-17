@@ -1,8 +1,7 @@
 import express, { Express } from 'express'
 import { productsRoutes } from '../product/routes'
-import { userRoutes } from '../logIn/routes'
-import handleErrors from '../shared/Errors'
-import notFound from '../shared/lib'
+import { userRoutes, loginRoutes } from '../logIn/routes'
+import { handleErrors, notFound } from '../shared'
 
 import helmet from 'helmet'
 import cors from 'cors'
@@ -21,6 +20,7 @@ export class Server {
     this.express.use(morgan('dev'))
     this.express.use('/api', productsRoutes)
     this.express.use('/api', userRoutes)
+    this.express.use('/api', loginRoutes)
     this.express.use(notFound)
     this.express.use(handleErrors)
   }

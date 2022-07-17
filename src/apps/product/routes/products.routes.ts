@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { Router } from 'express'
 import { createProductController, findAllProductsController, findProduct, updateProduct, deleteProduct } from '../controller/Product.controller'
 const router = Router()

@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { Router } from 'express'
-import { createUserController, findUsersController, findUserController, updateUserController, deleteUserController } from '../controller/user.controller'
+import { createUserController, findUsersController, updateUserController, deleteUserController } from '../controller'
+import { verifyToken } from '../../shared'
 
 const router = Router()
 
@@ -8,9 +8,7 @@ router.route('/users')
   .get(findUsersController)
   .post(createUserController)
 
-router.route('/user/:id')
-  .get(findUserController)
-  .put(updateUserController)
-  .delete(deleteUserController)
+router.put('/user/:id', verifyToken, updateUserController)
+router.delete('/user/:id', verifyToken, deleteUserController)
 
 export default router

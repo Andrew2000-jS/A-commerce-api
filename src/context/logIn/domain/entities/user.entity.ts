@@ -7,5 +7,5 @@ export interface IUserEntity {
   username: string
   password: string
   mail: string
-  isAdmin: boolean
+  role: string
 }
