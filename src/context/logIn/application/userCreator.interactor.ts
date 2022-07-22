@@ -9,7 +9,7 @@ const UserCreator = (UserRepo: UserRepository) => async (user: IUserEntity): Pro
     username: user.username,
     password: user.password,
     mail: user.mail,
-    role: 'user'
+    role: user.role
   }
 
   const savedUser = await UserRepo.save(newUser)
